@@ -7,6 +7,8 @@ import { DynamicComponent } from './dynamic/dynamic.component';
 import { ChildComponent } from './child/child.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { ChildsecondComponent } from './childsecond/childsecond.component';
 
 
 
@@ -14,14 +16,17 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     DynamicComponent,
-    ChildComponent
+    ChildComponent,
+    ChildsecondComponent
   ],
   imports: [
     BrowserModule,
     GridModule,
     HttpClientModule,
 
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

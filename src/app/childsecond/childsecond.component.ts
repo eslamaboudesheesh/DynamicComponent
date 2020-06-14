@@ -5,17 +5,17 @@ import {
   ComponentFactoryResolver,
   ViewChild,
 } from '@angular/core';
-import { DynamicComponent } from '../dynamic/dynamic.component';
-import { title } from 'process';
 import { PlaceholderService } from '../services/placeholder.service';
+import { DynamicComponent } from '../dynamic/dynamic.component';
 
 @Component({
-  selector: 'app-child',
-  templateUrl: './child.component.html',
-  styleUrls: ['./child.component.css'],
+  selector: 'app-childsecond',
+  templateUrl: './childsecond.component.html',
+  styleUrls: ['./childsecond.component.css'],
 })
-export class ChildComponent implements OnInit {
+export class ChildsecondComponent implements OnInit {
   public products: any;
+
   @ViewChild('dynamicComponent', { read: ViewContainerRef })
   entry: ViewContainerRef;
 
@@ -30,12 +30,6 @@ export class ChildComponent implements OnInit {
       name: 'title',
       title: 'title',
       field: 'title',
-      width: 180,
-    },
-    {
-      name: 'body',
-      title: 'body',
-      field: 'body',
       width: 180,
     },
     {
@@ -86,7 +80,6 @@ export class ChildComponent implements OnInit {
     );
     this.componentRef = this.entry.createComponent(this.resolver);
   }
-
   add() {
     this.placeholder.GetUser().subscribe((e) => {
       if (e) {
