@@ -1,13 +1,22 @@
 <p>dynamic works!</p>
-<kendo-grid [data]="gridData" [height]="410" *ngIf="gridData.length > 0">
+<kendo-grid [data]="gridData" [height]="410" *ngIf="gridWithoutData"
+    [pageSize]="state.take" [skip]="state.skip" [resizable]="false"
+        [sort]="state.sort" [filter]="state.filter" [sortable]="true" [pageable]="true" [filterable]="false"
+        (dataStateChange)="dataStateChange($event)"
+    >
+    <ng-template kendoGridToolbarTemplate>
+
+    <input placeholder="Search ..." class="form-control" kendoTextBox
+    (input)="onFilterForGrid($event.target.value)" style="float:right; width: 100%;" />
+</ng-template>
     <kendo-grid-column *ngFor="let item of gridField" field="{{ item.field }}" title="{{ item.title }}"
         width="{{ item.width }}">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" *ngIf="item.field == 'option'">
-            <button (click)="Update(dataItem, rowIndex)">showUserPosts</button>
+            <button (click)="ShowAction(dataItem, rowIndex)" class="btn btn-light">showUserPosts</button>
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>
-<h1 *ngIf="gridData.length > 0">UserPosts by Id Number {{ UserId }}</h1>
+<h1 *ngIf="gridWithoutData">UserPosts by Id Number {{ UserId }}</h1>
 
 <kendo-grid [data]="childgridData" [height]="410" *ngIf="childgridData.length > 0">
     <kendo-grid-column *ngFor="let item of childgridField" field="{{ item.field }}" title="{{ item.title }}"
