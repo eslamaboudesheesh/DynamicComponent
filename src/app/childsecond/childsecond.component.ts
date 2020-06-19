@@ -6,7 +6,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { PlaceholderService } from '../services/placeholder.service';
-import { DynamicComponent } from '../dynamic/dynamic.component';
+import { DynamicComponent } from '../dynamicGrid/dynamic.component';
+import { FormGroup, FormControl, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-childsecond',
@@ -14,6 +15,56 @@ import { DynamicComponent } from '../dynamic/dynamic.component';
   styleUrls: ['./childsecond.component.css'],
 })
 export class ChildsecondComponent implements OnInit {
+  public form: FormGroup;
+  unsubcribe: any
+
+  public fields: any[] = [
+    {
+      type: 'text',
+      name: 'firstName',
+      label: 'First Name',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      label: 'Last Name',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'text',
+      name: 'email',
+      label: 'Email',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'dropdown',
+      name: 'country',
+      label: 'Country',
+      value: 'in',
+      required: true,
+      options: [
+        { key: 'in', label: 'India' },
+        { key: 'us', label: 'USA' }
+      ]
+    },
+    {
+      type: 'checkbox',
+      name: 'hobby',
+      label: 'Hobby',
+      required: true,
+      options: [
+        { key: 'f', label: 'Fishing' },
+        { key: 'c', label: 'Cooking' }
+      ]
+    }
+  ];
+
+
+
   public products: any;
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef })
@@ -65,14 +116,28 @@ export class ChildsecondComponent implements OnInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private placeholder: PlaceholderService
-  ) {}
+  ) {
+
+ 
+  
+  }
 
   ngOnInit(): void {
+
     setTimeout(() => {
       this.createComponent();
       this.add();
+      this.form = new FormGroup({
+        fields: new FormControl(JSON.stringify(this.fields))
+      })
     }, 0);
   }
+
+  getFields() {
+    debugger
+    return this.fields;
+  }
+
 
   createComponent() {
     this.resolver = this.componentFactoryResolver.resolveComponentFactory(
@@ -108,5 +173,8 @@ export class ChildsecondComponent implements OnInit {
         };
       }
     });
+  }
+  onSubmit(form:Form){
+    console.log(form);
   }
 }

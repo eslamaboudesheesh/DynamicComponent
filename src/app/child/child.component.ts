@@ -5,7 +5,7 @@ import {
   ComponentFactoryResolver,
   ViewChild,
 } from '@angular/core';
-import { DynamicComponent } from '../dynamic/dynamic.component';
+import { DynamicComponent } from '../dynamicGrid/dynamic.component';
 import { title } from 'process';
 import { PlaceholderService } from '../services/placeholder.service';
 

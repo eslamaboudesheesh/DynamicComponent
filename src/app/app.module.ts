@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { GridModule } from '@progress/kendo-angular-grid';
 
 import { AppComponent } from './app.component';
-import { DynamicComponent } from './dynamic/dynamic.component';
+import { DynamicComponent } from './dynamicGrid/dynamic.component';
 import { ChildComponent } from './child/child.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ChildsecondComponent } from './childsecond/childsecond.component';
+import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 
 
 
@@ -17,7 +18,7 @@ import { ChildsecondComponent } from './childsecond/childsecond.component';
     AppComponent,
     DynamicComponent,
     ChildComponent,
-    ChildsecondComponent
+    ChildsecondComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ import { ChildsecondComponent } from './childsecond/childsecond.component';
 
     BrowserAnimationsModule,
 
-    AppRoutingModule
+    AppRoutingModule,
+    DynamicFormBuilderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
